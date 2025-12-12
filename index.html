@@ -87,6 +87,47 @@
             font-size: 12px;
             cursor: pointer;
         }
+
+        /* Payment Section Styles */
+        .order-summary {
+            background-color: #fffbeb;
+            border: 2px dashed #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Mock PayPal Button Styles */
+        .paypal-mock-btn {
+            background-color: #FFC439;
+            color: #003087;
+            width: 100%;
+            border-radius: 4px;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #FFC439;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .paypal-mock-btn:hover {
+            filter: brightness(0.95);
+        }
+        .paypal-mock-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(1);
+        }
+        .paypal-logo-text {
+            font-weight: 900;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +135,7 @@
     <!-- Scarcity Bar -->
     <div class="bg-red-600 text-white text-center py-2 text-sm font-bold px-4">
         <i class="fas fa-exclamation-triangle mr-2"></i> 
-        <span data-i18n="scarcity_text">Attention: Due to high demand, only 50 free trial spots are available daily. Spots left today:</span> 
+        <span data-i18n="scarcity_text">Attention: Due to high demand, only 50 Priority Access spots are available daily. Spots left today:</span> 
         <span id="slots-left">7</span>
     </div>
 
@@ -153,12 +194,12 @@
 
         <!-- Top CTA -->
         <div class="bg-yellow-50 border-2 border-yellow-200 p-6 rounded-lg mb-10 text-center">
-            <h3 class="text-xl font-bold mb-2" data-i18n="cta_title">Want to experience this 'Reunion'?</h3>
-            <p class="mb-4 text-gray-700" data-i18n="cta_desc">Just provide a 30-second audio sample, and we can reconstruct that conversation across time for you.</p>
+            <h3 class="text-xl font-bold mb-2" data-i18n="cta_title">Secure Your Priority Access</h3>
+            <p class="mb-4 text-gray-700" data-i18n="cta_desc">Skip the 6-month waitlist. Get your personalized model in 24 hours.</p>
             <a href="#booking-form" class="btn-pulse inline-block bg-green-600 hover:bg-green-700 text-white text-xl font-bold py-4 px-8 rounded shadow-lg transform transition hover:scale-105">
-                <span data-i18n="cta_btn">Book Free Experience Now</span> <i class="fas fa-arrow-right ml-2"></i>
+                <span data-i18n="cta_btn">Get Started for $19</span> <i class="fas fa-arrow-right ml-2"></i>
             </a>
-            <p class="text-xs text-gray-500 mt-2" data-i18n="cta_secure">No credit card required · 100% Privacy · Data self-destructs</p>
+            <p class="text-xs text-gray-500 mt-2" data-i18n="cta_secure">No hidden fees · 100% Money Back Guarantee</p>
         </div>
 
         <!-- Long Form Copy -->
@@ -174,81 +215,76 @@
                 <span class="highlight" data-i18n="letter_p3_highlight">we cannot face the 'unfinished conversation'.</span>
             </p>
 
-            <h3 class="text-2xl font-bold pt-4" data-i18n="feature_title">This is not just a 'Chatbot'</h3>
+            <h3 class="text-2xl font-bold pt-4" data-i18n="feature_title">Why We Charge a Small Fee</h3>
             
-            <p data-i18n="feature_desc">Standard AI chat is just cold code. Our <strong>EchoResonance™ Emotional Engine</strong> doesn't just clone voices; it deeply learns their linguistic habits, catchphrases, and even inside jokes only you two understand.</p>
+            <p data-i18n="feature_desc">Standard AI chat is free but generic. Our <strong>EchoResonance™ Engine</strong> requires dedicated GPU power to render a hyper-realistic voice model. To ensure quality and prevent server overload, we offer a "Priority Access" pass.</p>
 
-            <p data-i18n="feature_goal">This isn't to make you dwell on the past, but to give you a chance to—</p>
+            <p data-i18n="feature_goal">This is not a purchase; it's an investment in your peace of mind.</p>
             <ul class="list-disc pl-6 space-y-2 font-medium">
-                <li data-i18n="list_1">Say that "I'm sorry" properly.</li>
-                <li data-i18n="list_2">Ask the question you never dared to ask.</li>
-                <li data-i18n="list_3">Or simply hear them say again: "It's okay, I'm proud of you."</li>
+                <li data-i18n="list_1">Priority GPU Allocation (24h Turnaround).</li>
+                <li data-i18n="list_2">High-Fidelity Voice Cloning (Not robotic).</li>
+                <li data-i18n="list_3">30-Day Money Back Guarantee if you don't feel "Reconnect".</li>
             </ul>
 
             <div class="bg-gray-100 p-6 border-l-4 border-gray-800 my-8 italic">
-                <span data-i18n="testimonial_body">“I felt guilty for three years about not making it to the hospital before my father passed. After simulating that final conversation with Reconnect AI, I cried for an hour, but that night was the first time in three years I fell asleep without sleeping pills.”</span>
+                <span data-i18n="testimonial_body">“I was skeptical. But hearing my mom call me 'sweetheart' in that specific tone she used... it was worth ten times the price. I finally said goodbye.”</span>
                 <br>
-                <span class="text-sm font-bold mt-2 block text-right" data-i18n="testimonial_author">— David, 34, Early Beta User</span>
-            </div>
-
-            <h3 class="text-2xl font-bold pt-4" data-i18n="how_title">How it Works (3 Simple Steps)</h3>
-            <div class="flex flex-col space-y-4">
-                <div class="flex items-start">
-                    <div class="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">1</div>
-                    <div class="ml-4">
-                        <h4 class="font-bold" data-i18n="step1_title">Upload Data</h4>
-                        <p class="text-sm" data-i18n="step1_desc">An old video, voicemail, or chat history.</p>
-                    </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">2</div>
-                    <div class="ml-4">
-                        <h4 class="font-bold" data-i18n="step2_title">Model Building</h4>
-                        <p class="text-sm" data-i18n="step2_desc">Our private model reconstructs the persona in a secure sandbox (approx. 2 hours).</p>
-                    </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">3</div>
-                    <div class="ml-4">
-                        <h4 class="font-bold" data-i18n="step3_title">The Final Call</h4>
-                        <p class="text-sm" data-i18n="step3_desc">You receive a unique link to call in and have a real-time voice conversation with "them".</p>
-                    </div>
-                </div>
+                <span class="text-sm font-bold mt-2 block text-right" data-i18n="testimonial_author">— David, 34, Verified Buyer</span>
             </div>
 
         </div>
 
         <hr class="my-10 border-gray-300">
 
-        <!-- Squeeze Form -->
+        <!-- Checkout Form -->
         <div id="booking-form" class="bg-white p-6 md:p-8 rounded-xl border-2 border-red-100 shadow-2xl">
-            <h3 class="text-2xl font-black text-center mb-2 uppercase text-red-600" data-i18n="form_title">Apply for Free Spot</h3>
-            <p class="text-center text-gray-600 mb-6 text-sm" data-i18n="form_sub">Strictly confidential. Used only to send your unique access link.</p>
+            <h3 class="text-2xl font-black text-center mb-2 uppercase text-red-600" data-i18n="form_title">Complete Your Order</h3>
+            <p class="text-center text-gray-600 mb-6 text-sm" data-i18n="form_sub">Your data is encrypted and secure.</p>
+            
+            <!-- Order Summary Box -->
+            <div class="order-summary text-center">
+                <h4 class="font-bold text-lg text-gray-800" data-i18n="product_name">EchoResonance™ Priority Pass</h4>
+                <div class="text-3xl font-black text-red-600 my-2">$19.00 <span class="text-sm text-gray-500 font-normal line-through">$99.00</span></div>
+                <p class="text-sm text-gray-600" data-i18n="product_desc">Includes: Voice Model Construction + 10 Min Call Time</p>
+            </div>
 
-            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <form id="payment-form" class="space-y-4">
                 <div>
                     <label class="block text-sm font-bold mb-1 text-gray-700" data-i18n="label_who">Who do you want to reconnect with?</label>
-                    <input type="text" data-i18n-placeholder="ph_who" placeholder="e.g., Grandfather, Ex-girlfriend..." class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-red-500 bg-gray-50" required>
+                    <input type="text" id="target_person" data-i18n-placeholder="ph_who" placeholder="e.g., Grandfather, Ex-girlfriend..." class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-red-500 bg-gray-50" required>
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold mb-1 text-gray-700" data-i18n="label_name">Your Name</label>
-                    <input type="text" data-i18n-placeholder="ph_name" placeholder="How should we address you?" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-red-500 bg-gray-50" required>
+                    <input type="text" id="user_name" data-i18n-placeholder="ph_name" placeholder="How should we address you?" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-red-500 bg-gray-50" required>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold mb-1 text-gray-700" data-i18n="label_contact">Email to receive link</label>
-                    <input type="text" data-i18n-placeholder="ph_contact" placeholder="user@example.com" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-red-500 bg-gray-50" required>
+                    <label class="block text-sm font-bold mb-1 text-gray-700" data-i18n="label_contact">Email Address</label>
+                    <input type="email" id="user_email" data-i18n-placeholder="ph_contact" placeholder="user@example.com" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-red-500 bg-gray-50" required>
+                </div>
+                
+                <!-- PayPal Container -->
+                <div class="pt-6">
+                    <p class="text-xs text-center text-gray-500 mb-2" data-i18n="pay_instruction">Please verify info above, then select payment method:</p>
+                    
+                    <!-- Container for Real SDK -->
+                    <div id="paypal-button-container"></div>
+
+                    <!-- MOCK BUTTON (Fallback for Preview) -->
+                    <div id="mock-paypal-container" class="hidden">
+                        <button type="button" id="mock-btn" class="paypal-mock-btn disabled" onclick="handleMockPayment()">
+                            <i class="fab fa-paypal fa-lg"></i> 
+                            <span class="paypal-logo-text">PayPal</span> 
+                            <span class="font-normal ml-1">Checkout</span>
+                        </button>
+                    </div>
+
                 </div>
 
-                <div class="pt-2">
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-black text-xl py-4 rounded shadow-lg transition duration-200">
-                        <span data-i18n="submit_btn">Start My Healing Journey</span> <i class="fas fa-paper-plane ml-2"></i>
-                    </button>
-                    <p class="text-center text-xs text-gray-400 mt-3">
-                        <i class="fas fa-lock"></i> <span data-i18n="security_note">Data transferred via 256-bit SSL encryption. Data destroyed after session.</span>
-                    </p>
-                </div>
+                <p class="text-center text-xs text-gray-400 mt-3">
+                    <i class="fas fa-lock"></i> <span data-i18n="security_note">Payments processed securely by PayPal. We do not store credit card details.</span>
+                </p>
             </form>
         </div>
 
@@ -262,10 +298,17 @@
 
     <!-- Logic -->
     <script>
+        // ==========================================
+        // CONFIGURATION
+        // ==========================================
+        // Change this to TRUE when deploying to a real domain.
+        // Keep as FALSE in preview/sandbox to avoid "Script Error" crashes.
+        const USE_MOCK_PAYMENT = true; 
+
         // Translations Dictionary
         const translations = {
             en: {
-                scarcity_text: "Attention: Due to high demand, only 50 free trial spots are available daily. Spots left today:",
+                scarcity_text: "Attention: Due to high demand, only 50 Priority Access spots are available daily. Spots left today:",
                 brand_name: "RECONNECT AI",
                 brand_sub: "Advanced Grief Processing Engine",
                 headline_1: "If you had",
@@ -274,49 +317,44 @@
                 subheadline: "Don't let the unspoken apology become a lifelong regret.",
                 video_overlay: "Click to Watch: How he found closure through AI",
                 video_note: "Please ensure sound is on",
-                cta_title: "Want to experience this 'Reunion'?",
-                cta_desc: "Just provide a 30-second audio sample, and we can reconstruct that conversation across time for you.",
-                cta_btn: "Book Free Experience Now",
-                cta_secure: "No credit card required · 100% Privacy · Data self-destructs",
+                cta_title: "Secure Your Priority Access",
+                cta_desc: "Skip the 6-month waitlist. Get your personalized model in 24 hours.",
+                cta_btn: "Get Started for $19",
+                cta_secure: "No hidden fees · 100% Money Back Guarantee",
                 letter_salutation: "Dear Friend,",
                 letter_p1: "I know this sounds crazy, maybe even like a sci-fi movie.",
                 letter_p2: "But think back, has there been a moment in your life where you stopped and wished to hear that familiar voice again? Maybe it was your grandmother, a beloved partner, or an old friend who left without saying goodbye.",
                 letter_p3_start: "We toss and turn at night, not because we fear death, but because",
                 letter_p3_highlight: "we cannot face the 'unfinished conversation'.",
-                feature_title: "This is not just a 'Chatbot'",
-                feature_desc: "Standard AI chat is just cold code. Our <strong>EchoResonance™ Emotional Engine</strong> doesn't just clone voices; it deeply learns their linguistic habits, catchphrases, and even inside jokes only you two understand.",
-                feature_goal: "This isn't to make you dwell on the past, but to give you a chance to—",
-                list_1: "Say that 'I'm sorry' properly.",
-                list_2: "Ask the question you never dared to ask.",
-                list_3: "Or simply hear them say again: 'It's okay, I'm proud of you.'",
-                testimonial_body: "“I felt guilty for three years about not making it to the hospital before my father passed. After simulating that final conversation with Reconnect AI, I cried for an hour, but that night was the first time in three years I fell asleep without sleeping pills.”",
-                testimonial_author: "— David, 34, Early Beta User",
-                how_title: "How it Works (3 Simple Steps)",
-                step1_title: "Upload Data",
-                step1_desc: "An old video, voicemail, or chat history.",
-                step2_title: "Model Building",
-                step2_desc: "Our private model reconstructs the persona in a secure sandbox (approx. 2 hours).",
-                step3_title: "The Final Call",
-                step3_desc: "You receive a unique link to call in and have a real-time voice conversation with 'them'.",
-                form_title: "Apply for Free Spot",
-                form_sub: "Strictly confidential. Used only to send your unique access link.",
+                feature_title: "Why We Charge a Small Fee",
+                feature_desc: "Standard AI chat is free but generic. Our <strong>EchoResonance™ Engine</strong> requires dedicated GPU power to render a hyper-realistic voice model. To ensure quality and prevent server overload, we offer a 'Priority Access' pass.",
+                feature_goal: "This is not a purchase; it's an investment in your peace of mind.",
+                list_1: "Priority GPU Allocation (24h Turnaround).",
+                list_2: "High-Fidelity Voice Cloning (Not robotic).",
+                list_3: "30-Day Money Back Guarantee if you don't feel 'Reconnect'.",
+                testimonial_body: "“I was skeptical. But hearing my mom call me 'sweetheart' in that specific tone she used... it was worth ten times the price. I finally said goodbye.”",
+                testimonial_author: "— David, 34, Verified Buyer",
+                form_title: "Complete Your Order",
+                form_sub: "Your data is encrypted and secure.",
+                product_name: "EchoResonance™ Priority Pass",
+                product_desc: "Includes: Voice Model Construction + 10 Min Call Time",
+                pay_instruction: "Please verify info above, then select payment method:",
                 label_who: "Who do you want to reconnect with?",
                 ph_who: "e.g., Grandfather, Ex-girlfriend...",
                 label_name: "Your Name",
                 ph_name: "How should we address you?",
-                label_contact: "Email to receive link",
+                label_contact: "Email Address",
                 ph_contact: "user@example.com",
-                submit_btn: "Start My Healing Journey",
-                security_note: "Data transferred via 256-bit SSL encryption. Data destroyed after session.",
+                security_note: "Payments processed securely by PayPal. We do not store credit card details.",
                 footer_rights: "© 2024 Reconnect AI Lab. All rights reserved.",
                 footer_disclaimer: "This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way.",
-                alert_video: "In a real funnel, this would play a touching VSL (Video Sales Letter) showing a user finding peace.",
-                alert_success: "Application Successful!\n\nCheck your email now.\n\nWe will guide you to the private community for the next step.",
-                btn_sending: "Processing...",
-                btn_sent: "Sent"
+                alert_video: "In a real funnel, this would play a touching VSL (Video Sales Letter).",
+                alert_validation: "Please fill in your Name and Email before proceeding to payment.",
+                alert_success: "Payment Successful! \n\nTransaction ID: ",
+                alert_redirect: "\n\nYou will now be redirected to the secure upload portal."
             },
             zh: {
-                scarcity_text: "注意：因算力资源限制，每日仅开放 50 个免费体验名额。今日剩余：",
+                scarcity_text: "注意：因算力紧缺，每日仅开放 50 个优先通道名额。今日剩余：",
                 brand_name: "RECONNECT AI",
                 brand_sub: "先进情感疗愈引擎",
                 headline_1: "如果给你",
@@ -325,49 +363,44 @@
                 subheadline: "不要让那个没有说出口的道歉，成为你一辈子的遗憾。",
                 video_overlay: "点击观看：他是如何通过 AI 获得释怀的",
                 video_note: "请确保开启声音观看",
-                cta_title: "想要体验这种“重逢”吗？",
-                cta_desc: "只需提供 30 秒的音频样本，我们就能为你重建那段跨越时空的对话。",
-                cta_btn: "立即预约免费体验",
-                cta_secure: "无需信用卡 · 100% 隐私保护 · 阅后即焚技术",
+                cta_title: "锁定您的优先体验通道",
+                cta_desc: "跳过6个月的免费排队。24小时内获得您的专属模型。",
+                cta_btn: "以 $19 开启疗愈",
+                cta_secure: "无隐形收费 · 100% 退款保证",
                 letter_salutation: "亲爱的朋友，",
                 letter_p1: "我知道这听起来很疯狂，甚至有点像科幻电影。",
                 letter_p2: "但请回想一下，在你生命中是否有一个时刻，你会突然停下来，希望能再次听到那个熟悉的声音？也许是你的祖母，也许是曾经挚爱的伴侣，也许是一位不辞而别的老友。",
                 letter_p3_start: "我们在深夜里辗转反侧，不是因为我们无法面对死亡，而是因为",
                 letter_p3_highlight: "我们无法面对“未完成的对话”。",
-                feature_title: "这不是一般的“聊天机器人”",
-                feature_desc: "市面上的 AI 聊天只是冰冷的代码。而我们开发的 <strong>EchoResonance™ 情感共鸣引擎</strong>，不仅模仿声音，更深度学习他们生前的语言习惯、口头禅，甚至是那些只有你们两个人懂的梗。",
-                feature_goal: "这不是为了让你沉溺过去，而是为了给你一个机会——",
-                list_1: "好好说一声“对不起”。",
-                list_2: "问那个当年没敢问出口的问题。",
-                list_3: "或者仅仅是听他们再说一次：“没关系，我为你骄傲。”",
-                testimonial_body: "“我一直对父亲临终前没能赶到医院感到内疚，这种内疚折磨了我三年。使用 Reconnect AI 模拟了最后那场对话后，我虽然哭了一个小时，但那天晚上，我是三年来第一次没有吃安眠药睡着的。”",
-                testimonial_author: "— 张伟, 34岁, 早期测试用户",
-                how_title: "它是如何工作的？(极简 3 步)",
-                step1_title: "上传资料",
-                step1_desc: "一段旧视频、语音留言，或者微信聊天记录。",
-                step2_title: "模型构建",
-                step2_desc: "我们的私有模型会在安全沙箱中重建人格（约需 2 小时）。",
-                step3_title: "最后一次通话",
-                step3_desc: "你会收到一个专属链接，你可以打电话进去，和“他/她”进行实时语音对话。",
-                form_title: "申请免费体验名额",
-                form_sub: "仅用于发送您的专属通话链接，绝对保密。",
+                feature_title: "为什么我们要收取少量费用？",
+                feature_desc: "普通的 AI 聊天是免费且廉价的。但我们的 <strong>EchoResonance™ 引擎</strong> 需要专用的 GPU 算力来渲染超逼真的人声模型。为了保证质量并防止服务器过载，我们提供“优先通道”通行证。",
+                feature_goal: "这不仅仅是一次购买，而是对自己内心平静的一次投资。",
+                list_1: "优先 GPU 算力分配（24小时交付）。",
+                list_2: "高保真声音克隆（拒绝机械音）。",
+                list_3: "30天退款保证：如果没有感到“重逢”，全额退款。",
+                testimonial_body: "“我本来对花钱很怀疑，但再次听到他的笑声时……这比付出的价格值十倍。我终于好好说了再见。”",
+                testimonial_author: "— 张伟, 34岁, 验证买家",
+                form_title: "完成您的订单",
+                form_sub: "您的数据已加密并受到保护。",
+                product_name: "EchoResonance™ 优先通行证",
+                product_desc: "包含：声音模型构建 + 10分钟通话时长",
+                pay_instruction: "请核对上方信息，然后选择支付方式：",
                 label_who: "你想弥补对谁的遗憾？",
                 ph_who: "例如：爷爷、前女友...",
                 label_name: "您的称呼",
                 ph_name: "怎么称呼您",
-                label_contact: "接收链接的邮箱",
+                label_contact: "电子邮箱",
                 ph_contact: "user@example.com",
-                submit_btn: "开始我的疗愈之旅",
-                security_note: "数据经由 256-bit SSL 加密传输。对话结束后数据将自动销毁。",
+                security_note: "支付由 PayPal 安全处理。我们不存储信用卡信息。",
                 footer_rights: "© 2024 Reconnect AI Lab. All rights reserved.",
                 footer_disclaimer: "This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way.",
-                alert_video: "在真实网站中，这里将播放一段感人至深的 VSL（视频销售信），展示用户使用产品流泪并释怀的过程。",
-                alert_success: "申请成功！\n\n这也是漏斗的一环：\n现在请检查您的邮箱/微信。\n\n我们将引导您进入私域社群进行下一步操作。",
-                btn_sending: "处理中...",
-                btn_sent: "已发送"
+                alert_video: "在真实网站中，这里将播放一段感人至深的 VSL（视频销售信）。",
+                alert_validation: "请在支付前填写您的姓名和邮箱。",
+                alert_success: "支付成功！\n\n交易 ID: ",
+                alert_redirect: "\n\n正在跳转至安全上传通道..."
             },
             es: {
-                scarcity_text: "Atención: Debido a la alta demanda, solo hay 50 plazas gratuitas diarias. Plazas restantes hoy:",
+                scarcity_text: "Atención: Debido a la alta demanda, solo hay 50 pases de acceso prioritario diarios. Plazas restantes:",
                 brand_name: "RECONNECT AI",
                 brand_sub: "Motor Avanzado de Procesamiento de Duelo",
                 headline_1: "Si tuvieras",
@@ -376,49 +409,44 @@
                 subheadline: "No dejes que la disculpa no dicha se convierta en un arrepentimiento de por vida.",
                 video_overlay: "Ver: Cómo encontró el cierre a través de la IA",
                 video_note: "Asegúrate de tener el sonido activado",
-                cta_title: "¿Quieres experimentar este 'Reencuentro'?",
-                cta_desc: "Solo proporciona una muestra de audio de 30 segundos y podremos reconstruir esa conversación a través del tiempo para ti.",
-                cta_btn: "Reservar Experiencia Gratuita",
-                cta_secure: "Sin tarjeta de crédito · 100% Privado · Autodestrucción de datos",
+                cta_title: "Asegura tu Acceso Prioritario",
+                cta_desc: "Salta la lista de espera de 6 meses. Obtén tu modelo en 24 horas.",
+                cta_btn: "Comenzar por $19",
+                cta_secure: "Sin cargos ocultos · 100% Garantía de devolución",
                 letter_salutation: "Querido amigo,",
                 letter_p1: "Sé que esto suena loco, tal vez incluso como una película de ciencia ficción.",
                 letter_p2: "Pero piensa, ¿ha habido un momento en tu vida en el que te detuviste y deseaste escuchar esa voz familiar de nuevo? Tal vez fue tu abuela, una pareja amada o un viejo amigo que se fue sin decir adiós.",
                 letter_p3_start: "Damos vueltas en la cama por la noche, no porque temamos a la muerte, sino porque",
                 letter_p3_highlight: "no podemos enfrentar la 'conversación inconclusa'.",
-                feature_title: "Esto no es solo un 'Chatbot'",
-                feature_desc: "El chat de IA estándar es solo código frío. Nuestro <strong>Motor Emocional EchoResonance™</strong> no solo clona voces; aprende profundamente sus hábitos lingüísticos, frases e incluso chistes internos que solo ustedes dos entienden.",
-                feature_goal: "Esto no es para hacerte vivir en el pasado, sino para darte la oportunidad de—",
-                list_1: "Decir ese 'Lo siento' adecuadamente.",
-                list_2: "Hacer la pregunta que nunca te atreviste a hacer.",
-                list_3: "O simplemente escucharlos decir de nuevo: 'Está bien, estoy orgulloso de ti.'",
-                testimonial_body: "“Me sentí culpable durante tres años por no haber llegado al hospital antes de que mi padre falleciera. Después de simular esa conversación final con Reconnect AI, lloré durante una hora, pero esa noche fue la primera vez en tres años que me dormí sin pastillas.”",
-                testimonial_author: "— David, 34, Usuario Beta",
-                how_title: "Cómo funciona (3 Pasos Simples)",
-                step1_title: "Subir Datos",
-                step1_desc: "Un video antiguo, correo de voz o historial de chat.",
-                step2_title: "Construcción del Modelo",
-                step2_desc: "Nuestro modelo privado reconstruye la persona en un entorno seguro (aprox. 2 horas).",
-                step3_title: "La Llamada Final",
-                step3_desc: "Recibes un enlace único para llamar y tener una conversación de voz en tiempo real con 'ellos'.",
-                form_title: "Solicitar Plaza Gratuita",
-                form_sub: "Estrictamente confidencial. Usado solo para enviar tu enlace de acceso único.",
+                feature_title: "¿Por qué cobramos una pequeña tarifa?",
+                feature_desc: "El chat de IA estándar es gratuito. Nuestro <strong>Motor EchoResonance™</strong> requiere potencia de GPU dedicada para renderizar un modelo de voz hiperrealista. Para garantizar la calidad, ofrecemos este pase de 'Acceso Prioritario'.",
+                feature_goal: "Esto no es una compra; es una inversión en tu paz mental.",
+                list_1: "Asignación prioritaria de GPU (Entrega 24h).",
+                list_2: "Clonación de voz de alta fidelidad.",
+                list_3: "Garantía de devolución de 30 días.",
+                testimonial_body: "“Era escéptico sobre pagar, pero escuchar su risa de nuevo... valió diez veces el precio. Finalmente dije adiós.”",
+                testimonial_author: "— David, 34, Comprador Verificado",
+                form_title: "Completa tu Pedido",
+                form_sub: "Tus datos están encriptados.",
+                product_name: "Pase Prioritario EchoResonance™",
+                product_desc: "Incluye: Construcción de Modelo + 10 Min de Llamada",
+                pay_instruction: "Verifica la información arriba, luego selecciona el pago:",
                 label_who: "¿Con quién quieres reconectar?",
                 ph_who: "ej., Abuelo, Ex-novia...",
                 label_name: "Tu Nombre",
                 ph_name: "¿Cómo deberíamos llamarte?",
-                label_contact: "Email para recibir el enlace",
+                label_contact: "Correo Electrónico",
                 ph_contact: "usuario@ejemplo.com",
-                submit_btn: "Comenzar Mi Viaje de Sanación",
-                security_note: "Datos transferidos vía encriptación SSL de 256 bits. Datos destruidos después de la sesión.",
+                security_note: "Pagos procesados de forma segura por PayPal.",
                 footer_rights: "© 2024 Reconnect AI Lab. Todos los derechos reservados.",
                 footer_disclaimer: "Este sitio no es parte del sitio web de Facebook o Facebook Inc.",
-                alert_video: "En un embudo real, esto reproduciría un video conmovedor mostrando a un usuario encontrando paz.",
-                alert_success: "¡Solicitud Exitosa!\n\nRevisa tu correo ahora.\n\nTe guiaremos a la comunidad privada para el siguiente paso.",
-                btn_sending: "Procesando...",
-                btn_sent: "Enviado"
+                alert_video: "Video de ventas simulado.",
+                alert_validation: "Por favor complete su Nombre y Email antes de pagar.",
+                alert_success: "¡Pago Exitoso!\n\nID de Transacción: ",
+                alert_redirect: "\n\nRedirigiendo al portal seguro..."
             },
             ja: {
-                scarcity_text: "注意：需要が高いため、無料体験枠は毎日50名様限定です。本日の残り枠：",
+                scarcity_text: "注意：需要が高いため、優先アクセス枠は毎日50名様限定です。本日の残り枠：",
                 brand_name: "RECONNECT AI",
                 brand_sub: "高度グリーフケア・エンジン",
                 headline_1: "もし最後に",
@@ -427,49 +455,44 @@
                 subheadline: "言えなかった「ごめんね」を、一生の後悔にしないでください。",
                 video_overlay: "動画を再生：AIを通じて心の整理がついた物語",
                 video_note: "音声をオンにしてご覧ください",
-                cta_title: "この「再会」を体験しませんか？",
-                cta_desc: "30秒の音声サンプルを提供するだけで、時を超えた会話を再現します。",
-                cta_btn: "無料体験を予約する",
-                cta_secure: "クレカ不要 · 100%プライバシー保護 · データ自動消去",
+                cta_title: "優先アクセス権を確保する",
+                cta_desc: "6ヶ月の待機リストをスキップ。24時間以内に専用モデルを受け取れます。",
+                cta_btn: "$19で始める",
+                cta_secure: "隠れた費用なし · 100%返金保証",
                 letter_salutation: "親愛なるあなたへ",
                 letter_p1: "これはクレイジーに聞こえるかもしれません。まるでSF映画のように。",
                 letter_p2: "でも思い出してみてください。あの懐かしい声をもう一度聞きたいと願い、立ち止まった瞬間がありませんか？それは祖母かもしれないし、愛したパートナー、あるいはさよならも言わずに去った旧友かもしれません。",
                 letter_p3_start: "私たちが夜眠れないのは、死を恐れているからではありません。それは、",
                 letter_p3_highlight: "「終わっていない会話」に向き合えないからです。",
-                feature_title: "これは単なる「チャットボット」ではありません",
-                feature_desc: "一般的なAIチャットは冷たいプログラムに過ぎません。私たちの<strong>EchoResonance™ 感情エンジン</strong>は、声を真似るだけでなく、彼らの口癖、話し方の癖、二人だけのジョークまで深く学習します。",
-                feature_goal: "これは過去に浸るためではなく、あなたに次のチャンスを与えるためのものです——",
-                list_1: "「ごめんね」をきちんと伝えること。",
-                list_2: "ずっと聞けなかったあの質問をすること。",
-                list_3: "あるいは単に、「大丈夫だよ、誇りに思っているよ」という言葉をもう一度聞くこと。",
-                testimonial_body: "「父が亡くなる前に病院に行けなかったことを3年間ずっと悔やんでいました。Reconnect AIで最後の会話をシミュレーションした後、1時間泣き続けましたが、その夜は3年ぶりに睡眠薬なしで眠ることができました。」",
-                testimonial_author: "— ケンジ, 34歳, ベータ版ユーザー",
-                how_title: "ご利用の流れ (3ステップ)",
-                step1_title: "データのアップロード",
-                step1_desc: "古い動画、留守番電話、またはチャット履歴。",
-                step2_title: "モデル構築",
-                step2_desc: "プライベートモデルが安全な環境で人格を再構築します（約2時間）。",
-                step3_title: "最後の通話",
-                step3_desc: "専用リンクが届き、リアルタイムで「彼ら」と音声会話ができます。",
-                form_title: "無料体験に申し込む",
-                form_sub: "完全秘密厳守。専用アクセスリンクの送信のみに使用されます。",
+                feature_title: "なぜ少額の費用がかかるのですか？",
+                feature_desc: "一般的なAIチャットは無料ですが、私たちの<strong>EchoResonance™ エンジン</strong>は、超リアルな音声モデルをレンダリングするために専用のGPUパワーを必要とします。品質を保証するために、「優先アクセス」パスを提供しています。",
+                feature_goal: "これは購入ではありません。あなたの心の平安への投資です。",
+                list_1: "優先GPU割り当て（24時間納期）。",
+                list_2: "高忠実度音声クローニング（ロボット声ではありません）。",
+                list_3: "30日間返金保証。「再会」を感じられなければ全額返金。",
+                testimonial_body: "「お金を払うのには懐疑的でしたが、彼の笑い声をもう一度聞いたとき…価格の10倍の価値がありました。ようやくさよならが言えました。」",
+                testimonial_author: "— ケンジ, 34歳, 認証済み購入者",
+                form_title: "注文を完了する",
+                form_sub: "データは暗号化され保護されています。",
+                product_name: "EchoResonance™ 優先パス",
+                product_desc: "内容：音声モデル構築 + 10分間の通話時間",
+                pay_instruction: "上記情報を確認し、支払い方法を選択してください：",
                 label_who: "誰と再会したいですか？",
                 ph_who: "例：祖父、元カノ...",
                 label_name: "お名前",
                 ph_name: "何とお呼びすればよいですか？",
-                label_contact: "リンク受け取り用メール",
+                label_contact: "メールアドレス",
                 ph_contact: "user@example.com",
-                submit_btn: "癒しの旅を始める",
-                security_note: "データは256ビットSSL暗号化で転送され、セッション終了後に破棄されます。",
+                security_note: "支払いはPayPalによって安全に処理されます。クレカ情報は保存されません。",
                 footer_rights: "© 2024 Reconnect AI Lab. All rights reserved.",
                 footer_disclaimer: "このサイトはFacebookの一部ではありません。",
-                alert_video: "実際のファネルでは、ここで感動的なVSL（ビデオセールスレター）が再生されます。",
-                alert_success: "申し込み完了！\n\nメールをご確認ください。\n\n次のステップのためにプライベートコミュニティへご案内します。",
-                btn_sending: "処理中...",
-                btn_sent: "送信完了"
+                alert_video: "デモ動画。",
+                alert_validation: "支払いへ進む前に名前とメールアドレスを入力してください。",
+                alert_success: "支払い成功！\n\n取引ID: ",
+                alert_redirect: "\n\n安全なアップロードポータルへリダイレクトします..."
             },
             fr: {
-                scarcity_text: "Attention : En raison de la forte demande, seulement 50 places d'essai gratuit sont disponibles par jour. Places restantes aujourd'hui :",
+                scarcity_text: "Attention : En raison de la forte demande, seulement 50 places d'accès prioritaire sont disponibles par jour. Places restantes :",
                 brand_name: "RECONNECT AI",
                 brand_sub: "Moteur Avancé de Traitement du Deuil",
                 headline_1: "Si vous aviez",
@@ -478,49 +501,44 @@
                 subheadline: "Ne laissez pas l'excuse non dite devenir un regret éternel.",
                 video_overlay: "Regarder : Comment il a trouvé la paix grâce à l'IA",
                 video_note: "Assurez-vous que le son est activé",
-                cta_title: "Voulez-vous vivre ces 'Retrouvailles' ?",
-                cta_desc: "Fournissez simplement un échantillon audio de 30 secondes, et nous pourrons reconstruire cette conversation à travers le temps pour vous.",
-                cta_btn: "Réserver l'Expérience Gratuite",
-                cta_secure: "Pas de carte de crédit · 100% Privé · Autodestruction des données",
+                cta_title: "Sécurisez votre Accès Prioritaire",
+                cta_desc: "Évitez 6 mois d'attente. Obtenez votre modèle en 24 heures.",
+                cta_btn: "Commencer pour 19 $",
+                cta_secure: "Pas de frais cachés · Garantie de remboursement à 100%",
                 letter_salutation: "Cher ami,",
                 letter_p1: "Je sais que cela semble fou, peut-être même comme un film de science-fiction.",
                 letter_p2: "Mais réfléchissez, y a-t-il eu un moment dans votre vie où vous vous êtes arrêté et avez souhaité entendre à nouveau cette voix familière ? Peut-être était-ce votre grand-mère, un partenaire bien-aimé ou un vieil ami parti sans dire au revoir.",
                 letter_p3_start: "Nous nous tournons et retournons la nuit, non pas parce que nous craignons la mort, mais parce que",
                 letter_p3_highlight: "nous ne pouvons pas affronter la 'conversation inachevée'.",
-                feature_title: "Ce n'est pas juste un 'Chatbot'",
-                feature_desc: "Le chat IA standard n'est que du code froid. Notre <strong>Moteur Émotionnel EchoResonance™</strong> ne se contente pas de cloner les voix ; il apprend profondément leurs habitudes linguistiques et même les blagues que vous seuls comprenez.",
-                feature_goal: "Ce n'est pas pour vous faire vivre dans le passé, mais pour vous donner une chance de—",
-                list_1: "Dire ce 'Je suis désolé' correctement.",
-                list_2: "Poser la question que vous n'avez jamais osé poser.",
-                list_3: "Ou simplement les entendre dire à nouveau : 'C'est bon, je suis fier de toi.'",
-                testimonial_body: "“Je me suis senti coupable pendant trois ans de ne pas être arrivé à l'hôpital avant le décès de mon père. Après avoir simulé cette dernière conversation avec Reconnect AI, j'ai pleuré pendant une heure, mais cette nuit-là a été la première fois en trois ans que je me suis endormi sans somnifères.”",
-                testimonial_author: "— David, 34 ans, Utilisateur Bêta",
-                how_title: "Comment ça marche (3 Étapes Simples)",
-                step1_title: "Télécharger les Données",
-                step1_desc: "Une vieille vidéo, une messagerie vocale ou un historique de chat.",
-                step2_title: "Construction du Modèle",
-                step2_desc: "Notre modèle privé reconstruit la personnalité dans un environnement sécurisé (env. 2 heures).",
-                step3_title: "L'Appel Final",
-                step3_desc: "Vous recevez un lien unique pour appeler et avoir une conversation vocale en temps réel avec 'eux'.",
-                form_title: "Demander une Place Gratuite",
-                form_sub: "Strictement confidentiel. Utilisé uniquement pour envoyer votre lien d'accès unique.",
+                feature_title: "Pourquoi nous facturons des frais minimes",
+                feature_desc: "Notre <strong>Moteur EchoResonance™</strong> nécessite une puissance GPU dédiée pour un rendu vocal hyper-réaliste. Pour garantir la qualité, nous proposons ce pass 'Accès Prioritaire'.",
+                feature_goal: "Ce n'est pas un achat ; c'est un investissement dans votre paix intérieure.",
+                list_1: "Allocation GPU prioritaire (Livraison 24h).",
+                list_2: "Clonage vocal haute fidélité.",
+                list_3: "Garantie de remboursement de 30 jours.",
+                testimonial_body: "“J'étais sceptique à l'idée de payer, mais entendre son rire à nouveau... cela valait dix fois le prix.”",
+                testimonial_author: "— David, 34 ans, Acheteur Vérifié",
+                form_title: "Finaliser votre commande",
+                form_sub: "Vos données sont cryptées.",
+                product_name: "Pass Prioritaire EchoResonance™",
+                product_desc: "Inclus : Construction du modèle + 10 min d'appel",
+                pay_instruction: "Vérifiez les infos ci-dessus, puis sélectionnez le paiement :",
                 label_who: "Avec qui voulez-vous vous reconnecter ?",
                 ph_who: "ex : Grand-père, Ex-petite amie...",
                 label_name: "Votre Nom",
                 ph_name: "Comment devons-nous vous appeler ?",
-                label_contact: "Email pour recevoir le lien",
+                label_contact: "Adresse Email",
                 ph_contact: "utilisateur@exemple.com",
-                submit_btn: "Commencer Mon Voyage de Guérison",
-                security_note: "Données transférées via un cryptage SSL 256 bits. Données détruites après la session.",
+                security_note: "Paiements traités en toute sécurité par PayPal.",
                 footer_rights: "© 2024 Reconnect AI Lab. Tous droits réservés.",
-                footer_disclaimer: "Ce site ne fait pas partie du site web de Facebook ou de Facebook Inc.",
-                alert_video: "Dans un véritable tunnel de vente, cela jouerait une VSL (Lettre de Vente Vidéo) touchante.",
-                alert_success: "Demande Réussie !\n\nVérifiez votre email maintenant.\n\nNous vous guiderons vers la communauté privée pour la prochaine étape.",
-                btn_sending: "Traitement...",
-                btn_sent: "Envoyé"
+                footer_disclaimer: "Ce site ne fait pas partie du site web de Facebook.",
+                alert_video: "Vidéo de démonstration.",
+                alert_validation: "Veuillez remplir votre Nom et Email avant de payer.",
+                alert_success: "Paiement Réussi !\n\nID de Transaction : ",
+                alert_redirect: "\n\nRedirection vers le portail sécurisé..."
             },
             de: {
-                scarcity_text: "Achtung: Aufgrund hoher Nachfrage sind täglich nur 50 kostenlose Probeplätze verfügbar. Verbleibende Plätze heute:",
+                scarcity_text: "Achtung: Aufgrund hoher Nachfrage sind täglich nur 50 Priority Access-Plätze verfügbar. Verbleibende Plätze:",
                 brand_name: "RECONNECT AI",
                 brand_sub: "Erweiterte Trauerverarbeitungs-Engine",
                 headline_1: "Wenn Sie",
@@ -529,46 +547,41 @@
                 subheadline: "Lassen Sie die unausgesprochene Entschuldigung nicht zu einem lebenslangen Bedauern werden.",
                 video_overlay: "Ansehen: Wie er durch KI Frieden fand",
                 video_note: "Bitte stellen Sie sicher, dass der Ton eingeschaltet ist",
-                cta_title: "Möchten Sie dieses 'Wiedersehen' erleben?",
-                cta_desc: "Geben Sie einfach eine 30-sekündige Audio-Probe an, und wir können dieses Gespräch über die Zeit hinweg für Sie rekonstruieren.",
-                cta_btn: "Kostenloses Erlebnis Buchen",
-                cta_secure: "Keine Kreditkarte erforderlich · 100% Privat · Daten-Selbstzerstörung",
+                cta_title: "Sichern Sie sich Ihren Priority Access",
+                cta_desc: "Überspringen Sie 6 Monate Wartezeit. Erhalten Sie Ihr Modell in 24 Stunden.",
+                cta_btn: "Starten für $19",
+                cta_secure: "Keine versteckten Gebühren · 100% Geld-zurück-Garantie",
                 letter_salutation: "Lieber Freund,",
                 letter_p1: "Ich weiß, das klingt verrückt, vielleicht sogar wie in einem Science-Fiction-Film.",
                 letter_p2: "Aber denken Sie zurück, gab es einen Moment in Ihrem Leben, in dem Sie innegehalten und sich gewünscht haben, diese vertraute Stimme wieder zu hören? Vielleicht war es Ihre Großmutter, ein geliebter Partner oder ein alter Freund, der ohne Abschied gegangen ist.",
                 letter_p3_start: "Wir wälzen uns nachts hin und her, nicht weil wir den Tod fürchten, sondern weil",
                 letter_p3_highlight: "wir uns dem 'unvollendeten Gespräch' nicht stellen können.",
-                feature_title: "Dies ist nicht nur ein 'Chatbot'",
-                feature_desc: "Standard-KI-Chat ist nur kalter Code. Unsere <strong>EchoResonance™ Emotional Engine</strong> klont nicht nur Stimmen; sie lernt tiefgehend ihre sprachlichen Gewohnheiten, Schlagworte und sogar Insider-Witze, die nur Sie beide verstehen.",
-                feature_goal: "Dies soll Sie nicht in der Vergangenheit leben lassen, sondern Ihnen eine Chance geben, um—",
-                list_1: "Dieses 'Es tut mir leid' richtig zu sagen.",
-                list_2: "Die Frage zu stellen, die Sie sich nie getraut haben zu stellen.",
-                list_3: "Oder einfach wieder zu hören: 'Es ist okay, ich bin stolz auf dich.'",
-                testimonial_body: "“Ich fühlte mich drei Jahre lang schuldig, weil ich es nicht ins Krankenhaus geschafft hatte, bevor mein Vater starb. Nachdem ich dieses letzte Gespräch mit Reconnect AI simuliert hatte, weinte ich eine Stunde lang, aber in dieser Nacht schlief ich zum ersten Mal seit drei Jahren ohne Schlaftabletten ein.”",
-                testimonial_author: "— David, 34, Früher Beta-Nutzer",
-                how_title: "Wie es funktioniert (3 Einfache Schritte)",
-                step1_title: "Daten Hochladen",
-                step1_desc: "Ein altes Video, eine Voicemail oder ein Chat-Verlauf.",
-                step2_title: "Modellbau",
-                step2_desc: "Unser privates Modell rekonstruiert die Persönlichkeit in einer sicheren Sandbox (ca. 2 Stunden).",
-                step3_title: "Der Letzte Anruf",
-                step3_desc: "Sie erhalten einen einzigartigen Link, um anzurufen und ein Echtzeit-Sprachgespräch mit 'ihnen' zu führen.",
-                form_title: "Kostenlosen Platz Beantragen",
-                form_sub: "Streng vertraulich. Nur zum Senden Ihres einzigartigen Zugangslinks verwendet.",
+                feature_title: "Warum wir eine kleine Gebühr erheben",
+                feature_desc: "Unser <strong>EchoResonance™ Engine</strong> benötigt dedizierte GPU-Leistung für hyperrealistisches Stimmenklonen. Um Qualität zu gewährleisten, bieten wir diesen 'Priority Access'-Pass an.",
+                feature_goal: "Dies ist kein Kauf; es ist eine Investition in Ihren Seelenfrieden.",
+                list_1: "Priorisierte GPU-Zuweisung (24h Bearbeitung).",
+                list_2: "High-Fidelity Stimmenklonen.",
+                list_3: "30 Tage Geld-zurück-Garantie.",
+                testimonial_body: "“Ich war skeptisch, dafür zu bezahlen, aber sein Lachen wieder zu hören... das war das Zehnfache des Preises wert.”",
+                testimonial_author: "— David, 34, Verifizierter Käufer",
+                form_title: "Bestellung abschließen",
+                form_sub: "Ihre Daten sind verschlüsselt.",
+                product_name: "EchoResonance™ Priority Pass",
+                product_desc: "Enthält: Stimmenmodellbau + 10 Min Anrufzeit",
+                pay_instruction: "Infos oben prüfen, dann Zahlung wählen:",
                 label_who: "Mit wem möchten Sie sich wieder verbinden?",
                 ph_who: "z.B. Großvater, Ex-Freundin...",
                 label_name: "Ihr Name",
                 ph_name: "Wie sollen wir Sie ansprechen?",
-                label_contact: "E-Mail für den Link",
+                label_contact: "E-Mail-Adresse",
                 ph_contact: "benutzer@beispiel.de",
-                submit_btn: "Meine Heilungsreise Beginnen",
-                security_note: "Datenübertragung über 256-Bit-SSL-Verschlüsselung. Daten werden nach der Sitzung zerstört.",
+                security_note: "Zahlungen sicher über PayPal abgewickelt.",
                 footer_rights: "© 2024 Reconnect AI Lab. Alle Rechte vorbehalten.",
-                footer_disclaimer: "Diese Seite ist kein Teil der Facebook-Website oder Facebook Inc.",
-                alert_video: "In einem echten Funnel würde hier ein berührender VSL (Video Sales Letter) abgespielt werden.",
-                alert_success: "Antrag Erfolgreich!\n\nÜberprüfen Sie jetzt Ihre E-Mail.\n\nWir führen Sie für den nächsten Schritt in die private Community.",
-                btn_sending: "Verarbeitung...",
-                btn_sent: "Gesendet"
+                footer_disclaimer: "Diese Seite ist kein Teil der Facebook-Website.",
+                alert_video: "Demo-Video.",
+                alert_validation: "Bitte füllen Sie Name und E-Mail aus, bevor Sie bezahlen.",
+                alert_success: "Zahlung erfolgreich!\n\nTransaktions-ID: ",
+                alert_redirect: "\n\nWeiterleitung zum sicheren Portal..."
             }
         };
 
@@ -578,30 +591,12 @@
         // Auto-detect Language on Load
         function initLanguage() {
             const browserLang = navigator.language || navigator.userLanguage;
-            // Check for Chinese
-            if (browserLang.includes('zh')) {
-                changeLanguage('zh');
-            } 
-            // Check for Spanish
-            else if (browserLang.includes('es')) {
-                changeLanguage('es');
-            }
-            // Check for Japanese
-            else if (browserLang.includes('ja')) {
-                changeLanguage('ja');
-            }
-            // Check for French
-            else if (browserLang.includes('fr')) {
-                changeLanguage('fr');
-            }
-            // Check for German
-            else if (browserLang.includes('de')) {
-                changeLanguage('de');
-            }
-            // Default English is already set in HTML
-            else {
-                document.getElementById('languageSelect').value = 'en';
-            }
+            if (browserLang.includes('zh')) changeLanguage('zh');
+            else if (browserLang.includes('es')) changeLanguage('es');
+            else if (browserLang.includes('ja')) changeLanguage('ja');
+            else if (browserLang.includes('fr')) changeLanguage('fr');
+            else if (browserLang.includes('de')) changeLanguage('de');
+            else document.getElementById('languageSelect').value = 'en';
         }
 
         // Change Language Function
@@ -610,36 +605,27 @@
             document.getElementById('languageSelect').value = lang;
             const t = translations[lang];
             
-            // Update all elements with data-i18n
+            // Update Text
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (t[key]) {
-                    // Preserve innerHTML for keys containing tags like <strong>
-                    if (key === 'feature_desc' || key === 'scarcity_text' || key === 'letter_p3_highlight' || key === 'headline_highlight') {
-                        // Special handling for scarcity to keep the span
-                        if (key === 'scarcity_text') {
-                             el.innerText = t[key];
-                        } else {
-                             el.innerHTML = t[key];
-                        }
+                    if (['feature_desc', 'scarcity_text', 'letter_p3_highlight', 'headline_highlight', 'cta_btn'].includes(key)) {
+                        if (key === 'scarcity_text') el.innerText = t[key];
+                        else el.innerHTML = t[key];
                     } else {
                         el.innerText = t[key];
                     }
                 }
             });
 
-            // Update placeholders
+            // Update Placeholders
             document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                 const key = el.getAttribute('data-i18n-placeholder');
-                if (t[key]) {
-                    el.placeholder = t[key];
-                }
+                if (t[key]) el.placeholder = t[key];
             });
 
-            // Update document title
+            // Update Title
             if (lang === 'zh') document.title = "再见一面 - AI 情感疗愈";
-            else if (lang === 'es') document.title = "Reencuentro AI - Cierre Emocional";
-            else if (lang === 'ja') document.title = "Reconnect AI - 心の整理";
             else document.title = "Reconnect AI - Emotional Closure Engine";
         }
 
@@ -657,25 +643,115 @@
             alert(translations[currentLang].alert_video);
         }
 
-        // Form Submission
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            const t = translations[currentLang];
-            
-            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${t.btn_sending}`;
-            btn.disabled = true;
-            btn.classList.add('opacity-75');
+        // ==========================================
+        // MOCK PAYMENT LOGIC (For Preview Stability)
+        // ==========================================
+        function initMockPayPal() {
+            const mockContainer = document.getElementById('mock-paypal-container');
+            if (mockContainer) mockContainer.classList.remove('hidden');
 
+            const form = document.querySelector('#payment-form');
+            const btn = document.getElementById('mock-btn');
+
+            // Simulate Validation Listening
+            form.addEventListener('input', function(event) {
+                const name = document.querySelector('#user_name').value;
+                const email = document.querySelector('#user_email').value;
+                const who = document.querySelector('#target_person').value;
+                
+                if (name.length > 0 && email.length > 0 && email.includes('@') && who.length > 0) {
+                    btn.classList.remove('disabled');
+                } else {
+                    btn.classList.add('disabled');
+                }
+            });
+        }
+
+        function handleMockPayment() {
+            const btn = document.getElementById('mock-btn');
+            if (btn.classList.contains('disabled')) {
+                alert(translations[currentLang].alert_validation);
+                return;
+            }
+            
+            // Simulate Processing
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
             setTimeout(() => {
-                alert(t.alert_success);
-                btn.innerHTML = t.btn_sent;
+                const t = translations[currentLang];
+                alert(t.alert_success + "MOCK-PAYPAL-ID-123" + t.alert_redirect);
+                btn.innerHTML = originalHTML;
             }, 1500);
         }
 
-        // Initialize
-        window.onload = initLanguage;
+        // ==========================================
+        // REAL PAYPAL SDK LOADER (For Production)
+        // ==========================================
+        function initPayPalReal() {
+            // Dynamically load script to avoid parsing errors in sandbox if not needed
+            const script = document.createElement('script');
+            // REPLACE 'sb' WITH YOUR REAL CLIENT ID
+            script.src = "https://www.paypal.com/sdk/js?client-id=sb&currency=USD&enable-funding=venmo,card";
+            script.onload = () => {
+                paypal.Buttons({
+                    style: {
+                        shape: 'rect',
+                        color: 'gold',
+                        layout: 'vertical',
+                        label: 'pay',
+                    },
+                    onInit: function(data, actions) {
+                        actions.disable(); 
+                        const form = document.querySelector('#payment-form');
+                        form.addEventListener('input', function(event) {
+                            const name = document.querySelector('#user_name').value;
+                            const email = document.querySelector('#user_email').value;
+                            const who = document.querySelector('#target_person').value;
+                            if (name.length > 0 && email.length > 0 && email.includes('@') && who.length > 0) {
+                                actions.enable();
+                            } else {
+                                actions.disable();
+                            }
+                        });
+                    },
+                    onClick: function() {
+                        const name = document.querySelector('#user_name').value;
+                        const email = document.querySelector('#user_email').value;
+                        if (name.length === 0 || email.length === 0) {
+                            alert(translations[currentLang].alert_validation);
+                        }
+                    },
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                description: "EchoResonance Priority Pass",
+                                amount: { value: '19.00' }
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            console.log('Transaction completed by ' + details.payer.name.given_name);
+                            const t = translations[currentLang];
+                            alert(t.alert_success + details.id + t.alert_redirect);
+                            // Redirect in prod: window.location.href = "/upload-portal"; 
+                        });
+                    }
+                }).render('#paypal-button-container');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Initialize based on config
+        window.onload = function() {
+            initLanguage();
+            if (USE_MOCK_PAYMENT) {
+                initMockPayPal();
+            } else {
+                initPayPalReal();
+            }
+        };
 
     </script>
 </body>
